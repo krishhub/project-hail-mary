@@ -7,6 +7,11 @@ import { fetchVideoMeta, extractUrls } from "@/lib/metadata";
 //   https://your-app.vercel.app/api/webhook
 // and set the secret header X-Webhook-Secret.
 
+// Whapi verifies the endpoint with a GET request before saving it
+export async function GET() {
+  return NextResponse.json({ ok: true });
+}
+
 export async function POST(req: NextRequest) {
   // Verify secret
   const secret = req.headers.get("x-webhook-secret");
